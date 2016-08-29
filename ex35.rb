@@ -3,9 +3,8 @@ def gold_room
 
     print "> "
     choice = $stdin.gets.chomp
-
-    # this line has a bug, so fix it
-    if choice.include?("0") || choice.include?("1")
+    
+    if /^\d+$/ =~ choice
         how_much = choice.to_i
     else
         dead("Man, learn to type a number.")
@@ -14,7 +13,7 @@ def gold_room
     if how_much < 50
         puts "Nice, you're not greedy, you win!"
         exit(0)
-    else
+    else    
         dead("You greedy bastard!")
     end
 end
@@ -71,8 +70,7 @@ def dead(why)
 end
 
 def start
-    # gold_room
-    # use this to fix bug on line 8
+    gold_room
     puts "You are in a dark room."
     puts "There is a door to your right and left."
     puts "Which one do you take?"
@@ -91,9 +89,3 @@ end
 
 start
             
-
-
-            
-                
-            
-                                                
